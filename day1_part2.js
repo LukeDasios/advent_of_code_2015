@@ -17,19 +17,15 @@ fs.readFile('puzzle_input.txt', 'utf8', (err, data) => {
     console.error(err);
     return;
   }
-  // #1
   let floor = 0
 
-  // #2
   for (let i = 0; i < data.length; i++) {
-    // #3
     if (data[i] === "(") {
         floor++
     } else {
         floor--
     }
 
-    // #4
     if (floor === -1) {
         console.log(i + 1)
         break

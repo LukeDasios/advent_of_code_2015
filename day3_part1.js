@@ -4,13 +4,13 @@
  * Space Complexity: O(n)
  * 
  * Explanation: 
- * 1. Define a measurements variable that splits the data input by the new line character
- * 2. Define a total_square_feet variable that tracks the total square feet of wrapping paper needed to wrap all the presents.
- * 3. Loop through the input array. 
- * 4. Define the variables length, width, and height by splitting each element by the "x" character.
- * 5. Define the variable sizes to sort the length, width, and height variables in increasing order
- * 6. Add the total required wrapping paper for that present to the total_square_feet amount
- * 7. Console the total_square_feet variable to the console.
+ * 1. Define a row and column variable.
+ * 2. Define a grid variable equal to an empty Map, and set the origin value (0, 0) to 1
+ * 3. Split the input data by "" and iterate over each direction command.
+ * 4. Check to see what the direction command is, and increment/decrement row and col accordingly.
+ * 5. Create a unique string from the coordinates you are at, set it equal to a variable called coords.
+ * 6. Store that variable in your grip map.
+ * 7. Log to the console the size of your grid map. 
  * */
 
 const fs = require('fs');
@@ -23,28 +23,22 @@ fs.readFile('puzzle_input.txt', 'utf8', (err, data) => {
 
   let row = 0, col = 0
   let grid = new Map()
-  grid.set(`00`, 1)
-  
-  for (let i = 0; i < data.length; i++) {
-    let el = data[i]
+  grid.set(`0 0`, 1)
 
-    if (el === "^") {
+  data.split("").forEach(direction => {
+    if (direction === "^") {
         row--
-    } else if (el === "v") {
+    } else if (direction === "v") {
         row++
-    } else if (el === "<") {
+    } else if (direction === "<") {
         col--
-    } else if (el === ">") {
+    } else if (direction === ">") {
         col++
     }
 
-    let coords = `${row}${col}`
-    if (grid.has(coords)) {
-        grid.set(coords, grid.get(coords) + 1)
-    } else {
-        grid.set(coords, 1)
-    }
-  }
+    let coords = `${row} ${col}`
+    grid.set(coords, 1)
+  })
 
   console.log(grid.size)
 });

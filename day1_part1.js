@@ -17,12 +17,9 @@ fs.readFile('puzzle_input.txt', 'utf8', (err, data) => {
     console.error(err);
     return;
   }
-  // #1
   let floor = 0
 
-  // #2
   for (let i = 0; i < data.length; i++) {
-    // #3
     if (data[i] === "(") {
         floor++
     } else {
@@ -30,7 +27,6 @@ fs.readFile('puzzle_input.txt', 'utf8', (err, data) => {
     }
   }
 
-  // #4
   console.log(floor)
 });
 

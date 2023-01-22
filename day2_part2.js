@@ -21,24 +21,15 @@ fs.readFile('puzzle_input.txt', 'utf8', (err, data) => {
     return;
   }
 
-  // #1
   let measurements = data.split("\n")
-
-  // #2
   let total_square_feet = 0
   
-  // #3
   measurements.forEach(el => {
-    // #4
     let [length, width, height] = el.split("x")
-
-    // #5
     let sizes = [length, width, height].sort((a, b) => a - b)
 
-    // #6
     total_square_feet += ((sizes[0] * 2) + (sizes[1] * 2) + (length * width * height))
   })
 
-  // #7
   console.log(total_square_feet)
 });
